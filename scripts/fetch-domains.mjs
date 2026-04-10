@@ -1,9 +1,16 @@
-import { writeFileSync } from "node:fs";
-import { fileURLToPath } from "node:url";
-import { resolve, dirname } from "node:path";
+import { writeFileSync, existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { resolve, dirname } from 'node:path';
 
-const DOMAINS_URL =
-	"https://rawcdn.githack.com/disposable/disposable-email-domains/master/domains.json";
+const outPath = resolve(dirname(fileURLToPath(import.meta.url)), '../src/domains.json');
+
+// Skip fetch if domains.json already exists (avoids infinite rebuild loop in dev)
+if (existsSync(outPath)) {
+	console.log('domains.json already exists, skipping fetch');
+	process.exit(0);
+}
+
+const DOMAINS_URL = 'https://rawcdn.githack.com/disposable/disposable-email-domains/master/domains.json';
 
 const response = await fetch(DOMAINS_URL);
 if (!response.ok) {
@@ -12,6 +19,5 @@ if (!response.ok) {
 }
 
 const domains = await response.json();
-const outPath = resolve(dirname(fileURLToPath(import.meta.url)), "../src/domains.json");
 writeFileSync(outPath, JSON.stringify(domains));
 console.log(`Fetched ${domains.length} disposable domains`);
