@@ -1,7 +1,5 @@
-import domainsArray from "./domains.json";
+import trashDomains from "./domains.json";
 import HTML from "./index.html";
-
-const trashDomains: Set<string> = new Set(domainsArray);
 
 function parseInput(input: string): { email?: string; domain: string } | null {
 	const trimmed = input.trim().toLowerCase();
@@ -37,7 +35,7 @@ function handleCheck(input: string): Response {
 		return jsonResponse({ error: "Invalid input. Provide an email address or domain." }, 400);
 	}
 
-	const trash = trashDomains.has(parsed.domain);
+	const trash = parsed.domain in trashDomains;
 	const result: Record<string, unknown> = {};
 	if (parsed.email) result.email = parsed.email;
 	result.domain = parsed.domain;

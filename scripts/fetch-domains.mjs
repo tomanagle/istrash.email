@@ -6,7 +6,6 @@ const outPath = resolve(dirname(fileURLToPath(import.meta.url)), '../src/domains
 
 // Skip fetch if domains.json already exists (avoids infinite rebuild loop in dev)
 if (existsSync(outPath)) {
-	console.log('domains.json already exists, skipping fetch');
 	process.exit(0);
 }
 
@@ -19,5 +18,7 @@ if (!response.ok) {
 }
 
 const domains = await response.json();
-writeFileSync(outPath, JSON.stringify(domains));
+const lookup = Object.create(null);
+for (const d of domains) lookup[d] = 1;
+writeFileSync(outPath, JSON.stringify(lookup));
 console.log(`Fetched ${domains.length} disposable domains`);
