@@ -3,9 +3,9 @@
 	"version": "0.0.0",
 	"private": true,
 	"scripts": {
-		"fetch-domains": "bun scripts/fetch-domains.ts",
-		"prebuild": "bun scripts/fetch-domains.ts",
-		"deploy": "bun run prebuild && wrangler deploy",
+		"fetch-domains": "node scripts/fetch-domains.mjs",
+		"prebuild": "node scripts/fetch-domains.mjs",
+		"deploy": "npm run prebuild && wrangler deploy",
 		"dev": "wrangler dev",
 		"start": "wrangler dev",
 		"test": "vitest",
