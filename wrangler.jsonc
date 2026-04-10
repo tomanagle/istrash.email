@@ -6,6 +6,9 @@
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "istrashemail",
 	"main": "src/index.ts",
+	"build": {
+		"command": "node scripts/fetch-domains.mjs"
+	},
 	"compatibility_date": "2026-04-10",
 	"observability": {
 		"enabled": true,
