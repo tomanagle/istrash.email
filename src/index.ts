@@ -366,8 +366,8 @@ const HTML = `<!DOCTYPE html>
     </div>
 
     <div id="result"></div>
-    <div id="timing"></div>
     <pre id="response"></pre>
+    <div id="timing"></div>
 
     <h2>API</h2>
     <p>Free, no auth required. Returns JSON with CORS enabled.</p>
@@ -526,7 +526,7 @@ echo $data["trash"]; // 1</pre>
         const data = await res.json();
         const ms = (performance.now() - start).toFixed(0);
 
-        timing.textContent = ms + "ms";
+        timing.textContent = "\u26A1 Response time: " + ms + "ms";
         timing.className = "visible";
 
         response.textContent = JSON.stringify(data, null, 2);
