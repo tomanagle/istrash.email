@@ -57,7 +57,7 @@ const res = await fetch("https://istrash.email/check/mailinator.com");
 const data = await res.json();
 
 if (data.trash) {
-  // block signup
+	// block signup
 }
 ```
 
@@ -92,11 +92,11 @@ if result.Trash {
 
 ## Response
 
-| Field    | Type    | Description                                      |
-| -------- | ------- | ------------------------------------------------ |
+| Field    | Type    | Description                                       |
+| -------- | ------- | ------------------------------------------------- |
 | `email`  | string  | The full email address (omitted if only a domain) |
-| `domain` | string  | The domain that was checked                      |
-| `trash`  | boolean | `true` if the domain is disposable               |
+| `domain` | string  | The domain that was checked                       |
+| `trash`  | boolean | `true` if the domain is disposable                |
 
 Returns `400` for invalid input, `405` for non-GET methods. CORS is enabled.
 

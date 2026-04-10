@@ -1,21 +1,24 @@
 {
-  "name": "istrashemail",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "fetch-domains": "bun scripts/fetch-domains.ts",
-    "prebuild": "bun scripts/fetch-domains.ts",
-    "deploy": "bun run prebuild && wrangler deploy",
-    "dev": "wrangler dev",
-    "start": "wrangler dev",
-    "test": "vitest",
-    "cf-typegen": "wrangler types"
-  },
-  "devDependencies": {
-    "@cloudflare/vitest-pool-workers": "^0.12.4",
-    "@types/node": "^25.6.0",
-    "typescript": "^5.5.2",
-    "vitest": "~3.2.0",
-    "wrangler": "^4.81.1"
-  }
+	"name": "istrashemail",
+	"version": "0.0.0",
+	"private": true,
+	"scripts": {
+		"fetch-domains": "bun scripts/fetch-domains.ts",
+		"prebuild": "bun scripts/fetch-domains.ts",
+		"deploy": "bun run prebuild && wrangler deploy",
+		"dev": "wrangler dev",
+		"start": "wrangler dev",
+		"test": "vitest",
+		"cf-typegen": "wrangler types",
+		"fmt": "oxfmt",
+		"fmt:check": "oxfmt --check"
+	},
+	"devDependencies": {
+		"@cloudflare/vitest-pool-workers": "^0.12.4",
+		"@types/node": "^25.6.0",
+		"oxfmt": "^0.44.0",
+		"typescript": "^5.5.2",
+		"vitest": "~3.2.0",
+		"wrangler": "^4.81.1"
+	}
 }
