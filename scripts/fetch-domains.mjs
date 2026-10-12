@@ -9,7 +9,7 @@ if (existsSync(outPath)) {
 	process.exit(0);
 }
 
-const DOMAINS_URL = 'https://rawcdn.githack.com/disposable/disposable-email-domains/master/domains.json';
+const DOMAINS_URL = 'https://raw.githubusercontent.com/disposable/disposable-email-domains/master/domains.json';
 
 const response = await fetch(DOMAINS_URL);
 if (!response.ok) {
