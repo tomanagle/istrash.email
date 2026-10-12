@@ -1,6 +1,12 @@
 import trashDomains from "./domains.json";
 import HTML from "./index.html";
 
+// Render once per worker instance from the exact lookup bundled with this build.
+const landingHTML = HTML.replace(
+	"{{BLOCKED_DOMAIN_COUNT}}",
+	Object.keys(trashDomains).length.toLocaleString("en-US"),
+);
+
 function parseInput(input: string): { email?: string; domain: string } | null {
 	const trimmed = input.trim().toLowerCase();
 	if (!trimmed) return null;
@@ -82,7 +88,7 @@ export default {
 
 		// Static frontend
 		if (url.pathname === "/" || url.pathname === "/index.html") {
-			return new Response(HTML, {
+			return new Response(landingHTML, {
 				headers: { "Content-Type": "text/html; charset=utf-8" },
 			});
 		}
