@@ -35,8 +35,19 @@
     .tagline {
       text-align: center;
       color: #888;
-      margin-bottom: 40px;
+      margin-bottom: 16px;
       font-size: 1.1rem;
+    }
+
+    .domain-count {
+      text-align: center;
+      margin-bottom: 32px;
+      font-size: 0.95rem;
+    }
+
+    .domain-count strong {
+      color: #f87171;
+      font-variant-numeric: tabular-nums;
     }
 
     .checker {
@@ -265,6 +276,7 @@
   <main>
     <h1>is<span>trash</span>.email</h1>
     <p class="tagline">Check if an email address or domain is disposable</p>
+    <p class="domain-count"><strong id="blocked-domain-count">{{BLOCKED_DOMAIN_COUNT}}</strong> disposable domains blocked</p>
 
     <div class="checker">
       <input type="text" id="email" placeholder="user@example.com or example.com" autofocus>
